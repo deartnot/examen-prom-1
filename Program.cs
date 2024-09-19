@@ -62,9 +62,46 @@ namespace examen2._0
     }
 
 
+    class Jugador : Personaje
+    {
+        public int Mana;
+        public List<Poder> Poderes;
+
+        public Jugador(string name, int vida, int ataque, int mana)
+            : base(name, vida, ataque)
+        {
+            Mana = mana;
+            Poderes = new List<Poder>();
+        }
+
+        public void UsarItem(Item item)
+        {
+            Vida += item.Healing;
+            Mana += item.ManaRestore;
+            if (Vida > 100) Vida = 100; 
+            if (Mana > 100) Mana = 100; 
+            Console.WriteLine(Nombre + " usó " + item.Name + ", recuperó " + item.Healing + " de vida y " + item.ManaRestore + " de mana.");
+        }
+
+        public void UsarPoder(Poder poder, Personaje enemigo)
+        {
+            if (Mana >= poder.mana)
+            {
+                Mana -= poder.mana;
+                enemigo.Vida -= poder.Damage;
+                Console.WriteLine(Nombre + " usó " + poder.nombreDelPoder + " en " + enemigo.Nombre + ", hizo " + poder.Damage + " de daño. Vida restante de " + enemigo.Nombre + ": " + enemigo.Vida);
+            }
+            else
+            {
+                Console.WriteLine("No tienes suficiente mana.");
+            }
+        }
+    }
+
+
     class Enemigo : Personaje
     {
-        public string tipo; // si es "melee" o "rango"
+        public string tipo; 
 
         public Enemigo(string name, int vida, int ataque, string tipoDeEnemigo)
             : base(name, vida, ataque)
