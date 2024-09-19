@@ -19,4 +19,18 @@ namespace examen2._0
             ManaRestore = mana; 
         }
     }
+
+    class Poder
+    {
+        public string nombreDelPoder; 
+        public int Damage;
+        public int mana;
+
+        public Poder(string name, int damage, int costoMana)
+        {
+            nombreDelPoder = name; 
+            Damage = damage; 
+            mana = costoMana; 
+        }
+    }
 }
