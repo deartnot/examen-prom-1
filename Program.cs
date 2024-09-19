@@ -6,15 +6,17 @@ using System.Threading.Tasks;
 
 namespace examen2._0
 {
-    internal class Program
+    class Item
     {
-        class Item
-        {
-            public string Name { get; set; }
-            public int Healing { get; set; } // Para recuperar vida
-            public int ManaRestore { get; set; } // Para recuperar maná
+        public string Name;
+        public int Healing;
+        public int ManaRestore;
 
-           
+        public Item(string nombre, int curacion, int mana)
+        {
+            Name = nombre; 
+            Healing = curacion; 
+            ManaRestore = mana; 
         }
     }
 }
